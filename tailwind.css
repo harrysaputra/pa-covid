@@ -1,0 +1,225 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Style */
+
+button {
+    @apply shadow-sm;
+}
+
+button:hover {
+    @apply shadow-md;
+}
+
+button:focus {
+    @apply outline-none;
+}
+
+button:active {
+    @apply shadow-inner;
+}
+
+.pt-10vh {
+    padding-top: 10vh;
+}
+
+/* Custom CSS start */
+
+#language-bar {
+
+    button {
+        @apply border-300 shadow-none;
+    }
+
+    button.selected,
+    button:active {
+        @apply bg-secondary-blue text-white border-secondary-blue;
+    }
+
+    button:hover,
+    button:focus {
+        @apply border-500;
+    }
+
+}
+
+#contact-bar {
+    height: 8vh;
+    top: 0;
+    z-index: 10;
+}
+
+.v--modal-overlay .v--modal-box,
+.v--modal {
+    overflow-y: auto !important;
+}
+
+.levels {
+    background-color: #2a2a2a;
+
+    header {
+        .confetti {
+            background-image: url('/images/confetti-level.svg');
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        .carousel-3d-slide {
+            border-width: 0px;
+            background-color: transparent;
+
+            .card-red {
+                background-image: url('/images/card-red.jpg');
+                background-size: cover;
+                height: 210px;
+            }
+
+            .card-blue {
+                background-image: url('/images/card-blue.jpg');
+                background-size: cover;
+                height: 210px;
+            }
+
+            .card-green {
+                background-image: url('/images/card-green.jpg');
+                background-size: cover;
+                height: 210px;
+            }
+        }
+    }
+
+    .rebate-percentage-bg {
+        background-image: url('/images/rebate-percentage-bg.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
+.rebates {
+    background-color: rgb(16, 136, 180) 100%;
+
+    header {
+        background-image: linear-gradient(rgb(4, 73, 174) 18%, rgb(16, 136, 180) 100%);
+        height: 21.875rem;
+
+        .confetti {
+            background-image: url('/images/confetti-rebate.svg');
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        .amount {
+            background-color: #001932;
+            background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+
+            span {
+                font-size: 0.625rem;
+            }
+        }
+    }
+}
+
+.pwa-form {
+    .form-label-group {
+        @apply relative p-4 bg-grey-5 font-medium border-solid border-b border-grey-30;
+
+        >input,
+        >label {
+            padding: var(--input-padding-y) var(--input-padding-x);
+        }
+
+        input,
+        select {
+
+            &[readonly],
+            &[disabled] {
+                @apply cursor-not-allowed;
+            }
+
+            &::-webkit-input-placeholder,
+            &::-ms-input-placeholder,
+            &::-moz-placeholder,
+            &::placeholder {
+                @apply text-transparent;
+            }
+        }
+
+        &.has-error {
+            @apply border-light-red;
+
+            >label {
+                @apply text-light-red;
+            }
+
+            input:not(:placeholder-shown),
+            select:not(:placeholder-shown) {
+                ~label {
+                    @apply text-light-red;
+                }
+            }
+        }
+
+        &.not-editable {
+            @apply bg-white border-white cursor-not-allowed;
+
+            >label {
+                @apply cursor-not-allowed;
+            }
+        }
+
+
+        >label {
+            @apply absolute block mb-0 leading-normal border border-solid border-transparent rounded text-grey-80;
+
+            transition: all .1s ease-in-out;
+            top: 1rem;
+            left: 1rem;
+        }
+
+        input:not(:placeholder-shown),
+        select:not(:placeholder-shown) {
+            @apply relative pl-0;
+            padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+            padding-bottom: calc(var(--input-padding-y) / 3);
+            top: .5rem;
+
+            ~label {
+                @apply text-grey-50 text-xs;
+
+                padding-top: calc(var(--input-padding-y) / 3);
+                padding-bottom: calc(var(--input-padding-y) / 3);
+
+                top: .3125rem;
+                left: 0.9375rem;
+            }
+        }
+    }
+}
+
+.top-shadow {
+    -webkit-box-shadow: 0px -5px 10px 0px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 0px -5px 10px 0px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px -5px 10px 0px rgba(0, 0, 0, 0.05);
+}
+
+.select-addon {
+    @apply h-6 w-6 rounded-full absolute;
+    left: -5px;
+    top: -5px;
+}
+
+.select-info {
+    @apply h-4 w-4 absolute;
+    top: 0.75rem;
+    right: 1rem;
+}
+
+.checkbox {
+    @apply h-4 w-4 border border-500 inline-block rounded-sm;
+
+    &.true {
+        @apply border-secondary-green;
+    }
+}
