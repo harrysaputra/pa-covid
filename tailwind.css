@@ -4,24 +4,36 @@
 
 /* Global Style */
 
-button {
+button[enabled] {
     @apply shadow-sm;
+    transition: all 0.3s ease-in-out;
 }
 
-button:hover {
+button[enabled]:hover {
     @apply shadow-md;
 }
 
-button:focus {
+button[enabled]:focus {
     @apply outline-none;
 }
 
-button:active {
+button[enabled]:active {
     @apply shadow-inner;
 }
 
 .pt-10vh {
     padding-top: 10vh;
+}
+
+button,
+.radio div,
+svg {
+    transition: all 0.3s ease-in-out;
+}
+
+button[disabled],
+button[disabled]:hover {
+    @apply bg-300 cursor-not-allowed;
 }
 
 /* Custom CSS start */
@@ -216,10 +228,28 @@ button:active {
     right: 1rem;
 }
 
-.checkbox {
-    @apply h-4 w-4 border border-500 inline-block rounded-sm;
+.radio {
+    @apply relative overflow-hidden;
 
-    &.true {
-        @apply border-secondary-green;
+    input {
+        @apply cursor-pointer absolute w-full h-full appearance-none;
     }
+
+    input:checked,
+    input:hover,
+    input.selected {
+        @apply outline-none;
+
+        +div {
+            @apply bg-100 shadow-md;
+        }
+    }
+
+    input:checked,
+    input.selected {
+        +div svg {
+            @apply text-secondary-green;
+        }
+    }
+
 }
